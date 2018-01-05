@@ -1,0 +1,57 @@
+body {
+    background-color: black;
+    color: aqua;
+}
+
+h1 {
+    color: aqua;
+    text-align: center;
+    font-size: 4em;
+}
+
+#contenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#parametres {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px;
+}
+
+.parainf {
+    display: flex;
+    flex-direction: column;
+    /*border: solid 1px;*/
+    margin: 40px;
+    padding: 50px;
+}
+
+.parainf:hover {
+    color: #48E80E;
+}
+
+.boutons {
+    border: solid 1px;
+    padding: 5px;
+    color: aqua;
+}
+
+.boutons:hover {
+    color: #48E80E;
+    font-weight: bold;
+}
+
+a {
+    color: aqua;
+    text-decoration: none;
+}
+
+#go {
+    margin: 0;
+    border: solid 1px;
+}
