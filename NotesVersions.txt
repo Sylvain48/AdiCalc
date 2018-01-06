@@ -1,2 +1,10 @@
 Notes de version :
 
+V 0.01 Initial commit
+mise en place de l'interface paramètres.
+Aspect visuel uniquement, pas d'interactions possible
+
+V0.02 modif interface
+Amélioration de l'aspect de l'interface
+les cases sont séparées
+Toujours pas d'interactions

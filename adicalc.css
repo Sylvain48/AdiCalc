@@ -39,6 +39,8 @@ h1 {
     border: solid 1px;
     padding: 5px;
     color: aqua;
+    margin: 10px;
+    text-align: center;
 }
 
 .boutons:hover {

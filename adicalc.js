@@ -66,7 +66,7 @@ function goParametres() {
     goElt.classList.add("parainf");
     goElt.id = "go";
     goElt.href = "#";
-    
+        
     dimensionElt.appendChild(dimQuatre);
     dimensionElt.appendChild(dimCinq);
     dimensionElt.appendChild(dimSix);
