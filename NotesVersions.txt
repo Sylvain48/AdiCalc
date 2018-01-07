@@ -1,10 +1,16 @@
 Notes de version :
 
-V 0.01 Initial commit
-mise en place de l'interface paramètres.
-Aspect visuel uniquement, pas d'interactions possible
+V 0.03 Interaction interface
+-Modification du nom de certains éléments (ajout du suffixe "Elt")
+-Clarification du fichier de notes de version
+-Début d'interaction avec l'interface paramètres: un clic sur les cases de selection donne la valeur aux mémoires "dimension" et "valeurs" paramétrant le tableau de jeu
+-Présence dans le code de console.log de controle de l'interface paramètre. Fonctionnement OK
 
-V0.02 modif interface
-Amélioration de l'aspect de l'interface
-les cases sont séparées
-Toujours pas d'interactions
+V 0.02 modif interface
+-Amélioration de l'aspect de l'interface
+-Les cases de l'interface paramètre sont séparées
+-Toujours pas d'interactions
+
+V 0.01 Initial commit
+-Mise en place de l'interface paramètres.
+-Aspect visuel uniquement, pas d'interactions possible
