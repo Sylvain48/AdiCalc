@@ -1,5 +1,12 @@
 Notes de version :
 
+V 0.04
+-Valeurs paramètre tableau prédéfinies (dimension 5 & plage 1-9)
+-Ajout de la dimension 3x3 pour le tableau
+-Ajustement des marges de l'interface
+-Le bouton GO efface les paramètres et lance la fonction jeu (actuellement vide)
+-Effacement dans le code des consoles.log de controle des paramètres.
+
 V 0.03 Interaction interface
 -Modification du nom de certains éléments (ajout du suffixe "Elt")
 -Clarification du fichier de notes de version

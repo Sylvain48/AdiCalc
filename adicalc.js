@@ -16,17 +16,18 @@ valeursElt.classList.add("parainf");
 var goElt = document.createElement("a");
 
 // création des éléments de dimentionnement du tableau
+var dimTroisElt = document.createElement("a");
 var dimQuatreElt = document.createElement("a");
 var dimCinqElt = document.createElement("a");
 var dimSixElt = document.createElement("a");
 var dimSeptElt = document.createElement("a");
-var dimension = 0; // Dimension du tableau de jeu
+var dimension = 5; // Dimension du tableau de jeu (5 par défaut)
 
 // Création des éléments de choix des valeurs
 var valCinqElt = document.createElement("a");
 var valNeufElt = document.createElement("a");
 var valDixNeufElt = document.createElement("a");
-var valeurs = 0 // Amplitude des valeurs du tableau
+var valeurs = 9 // Amplitude des valeurs du tableau (1-9 par défaut)
 
 // Converti indices de tableaux à 2 dimensions
 // Renvoi l'indice pour un tableau unidimensionnel
@@ -41,71 +42,78 @@ function indiceTableau(x, y, largeurTableau, hauteurTableau) {
 
 // Fait apparaitre les parametres
 function goParametres() {
+    parametresElt.style.border = "solid 1px";
     // Dimensions du tableau
+    dimTroisElt.textContent = "3x3";
+    dimTroisElt.classList.add("boutons");
+    dimTroisElt.href = "#";
+    dimTroisElt.addEventListener("click", function (e) {
+        e.preventDefault();
+        dimension = 3;
+    });    
     dimQuatreElt.textContent = "4x4";
     dimQuatreElt.classList.add("boutons");
     dimQuatreElt.href = "#";
-    dimQuatreElt.addEventListener("click", function(e) {
+    dimQuatreElt.addEventListener("click", function (e) {
         e.preventDefault();
         dimension = 4;
-        console.log("Dimensions du tableau : " + dimension + "   Valeurs du tableau : 1-" + valeurs);
     });
     dimCinqElt.textContent = "5x5";
     dimCinqElt.classList.add("boutons");
     dimCinqElt.href = "#";
-    dimCinqElt.addEventListener("click", function(e) {
-       e.preventDefault();
+    dimCinqElt.addEventListener("click", function (e) {
+        e.preventDefault();
         dimension = 5;
-        console.log("Dimensions du tableau : " + dimension + "   Valeurs du tableau : 1-" + valeurs);
     });
     dimSixElt.textContent = "6x6";
     dimSixElt.classList.add("boutons");
     dimSixElt.href = "#";
-    dimSixElt.addEventListener("click", function(e) {
+    dimSixElt.addEventListener("click", function (e) {
         e.preventDefault();
         dimension = 6;
-        console.log("Dimensions du tableau : " + dimension + "   Valeurs du tableau : 1-" + valeurs);
     });
     dimSeptElt.textContent = "7x7";
     dimSeptElt.classList.add("boutons");
     dimSeptElt.href = "#";
-    dimSeptElt.addEventListener("click", function(e) {
-       e.preventDefault();
+    dimSeptElt.addEventListener("click", function (e) {
+        e.preventDefault();
         dimension = 7;
-        console.log("Dimensions du tableau : " + dimension + "   Valeurs du tableau : 1-" + valeurs);
     });
-    
+
     // Plage des Valeurs de nombres du tableau
     valCinqElt.textContent = "1-5";
     valCinqElt.classList.add("boutons");
     valCinqElt.href = "#";
-    valCinqElt.addEventListener("click", function(e) {
+    valCinqElt.addEventListener("click", function (e) {
         e.preventDefault();
         valeurs = 5;
-        console.log("Dimensions du tableau : " + dimension + "   Valeurs du tableau : 1-" + valeurs);
     });
     valNeufElt.textContent = "1-9";
     valNeufElt.classList.add("boutons");
     valNeufElt.href = "#";
-    valNeufElt.addEventListener("click", function(e) {
-       e.preventDefault();
+    valNeufElt.addEventListener("click", function (e) {
+        e.preventDefault();
         valeurs = 9;
-        console.log("Dimensions du tableau : " + dimension + "   Valeurs du tableau : 1-" + valeurs);
     });
     valDixNeufElt.textContent = "1-19";
     valDixNeufElt.classList.add("boutons");
     valDixNeufElt.href = "#";
-    valDixNeufElt.addEventListener("click", function(e) {
-       e.preventDefault();
+    valDixNeufElt.addEventListener("click", function (e) {
+        e.preventDefault();
         valeurs = 19;
-        console.log("Dimensions du tableau : " + dimension + "   Valeurs du tableau : 1-" + valeurs);
     });
 
     goElt.textContent = "GO";
     goElt.classList.add("parainf");
     goElt.id = "go";
     goElt.href = "#";
-        
+    goElt.addEventListener("click", function (e) {
+        e.preventDefault();
+        razParametres();
+        return;
+    });
+
+    dimensionElt.appendChild(dimTroisElt);
     dimensionElt.appendChild(dimQuatreElt);
     dimensionElt.appendChild(dimCinqElt);
     dimensionElt.appendChild(dimSixElt);
@@ -120,10 +128,15 @@ function goParametres() {
     parametresElt.appendChild(valeursElt);
 }
 
-// Fait disparaitre les parametres
+// Fait disparaitre les parametres et lance le jeu
 function razParametres() {
+    parametresElt.innerHTML = "";
+    parametresElt.style.border = "none";
+    lancerJeu();
+}
 
+function lancerJeu() {
+    console.log("GO!!!");
 }
 
 goParametres();
-

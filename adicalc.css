@@ -28,7 +28,7 @@ h1 {
     flex-direction: column;
     /*border: solid 1px;*/
     margin: 40px;
-    padding: 50px;
+    padding: 40px;
 }
 
 .parainf:hover {
@@ -37,7 +37,7 @@ h1 {
 
 .boutons {
     border: solid 1px;
-    padding: 5px;
+    padding: 10px;
     color: aqua;
     margin: 10px;
     text-align: center;
