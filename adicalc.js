@@ -50,7 +50,7 @@ function goParametres() {
     dimTroisElt.addEventListener("click", function (e) {
         e.preventDefault();
         dimension = 3;
-    });    
+    });
     dimQuatreElt.textContent = "4x4";
     dimQuatreElt.classList.add("boutons");
     dimQuatreElt.href = "#";
@@ -132,11 +132,43 @@ function goParametres() {
 function razParametres() {
     parametresElt.innerHTML = "";
     parametresElt.style.border = "none";
+    console.log("Dimension : " + dimension + "     Valeurs : 1-" + valeurs);
     lancerJeu();
 }
 
+// Construction aire de jeu
+function constructAireJeu() {
+    jeuElt.style.width = "700px";
+    jeuElt.style.height = "700px";
+    jeuElt.style.border = "solid 1px";
+    jeuElt.style.display = "flex";
+    jeuElt.style.justifyContent = "center";
+    jeuElt.style.alignItems = "center";
+
+    // création du tableau
+    var tableauElt = document.createElement("table");
+    var tableauTrElts = [];
+    var tableauTdElts = [];
+    var indice = 0;
+    for (var i = 0; i < dimension; i++) {
+        tableauTrElts[i] = document.createElement("tr");
+        tableauElt.appendChild(tableauTrElts[i]);
+        for (var j = 0; j < dimension; j++) {
+            indice = indiceTableau(j, i, dimension, dimension);
+            tableauTdElts[indice] = document.createElement("td");
+            tableauTdElts[indice].style.border = "1px solid";
+            tableauTdElts[indice].textContent = indice;
+            tableauTrElts[i].appendChild(tableauTdElts[indice]);
+        } //fin boucle j
+    } // fin boucle i
+    jeuElt.appendChild(tableauElt);
+}
+
+
+
 function lancerJeu() {
     console.log("GO!!!");
+    constructAireJeu();
 }
 
 goParametres();

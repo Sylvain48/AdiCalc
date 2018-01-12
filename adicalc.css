@@ -15,6 +15,8 @@ h1 {
     align-items: center;
 }
 
+/* Paramètres */
+
 #parametres {
     font-size: 1.5em;
     display: flex;
@@ -56,4 +58,16 @@ a {
 #go {
     margin: 0;
     border: solid 1px;
+}
+
+/* Jeu */
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding: 20px;
+    font-size: 1.8em;
+    text-align: center;
 }

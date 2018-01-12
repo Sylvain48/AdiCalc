@@ -1,6 +1,12 @@
 Notes de version :
 
-V 0.04
+V 0.10 Premier tableau
+-Ajout du cadre de jeu
+-Création d'un tableau de dimension choisie dans les paramètres (=dimension)
+-contenu des cellules : leur indice
+-Le tableau est bien centré dans la zone de jeu
+
+V 0.04 Paramètres OK
 -Valeurs paramètre tableau prédéfinies (dimension 5 & plage 1-9)
 -Ajout de la dimension 3x3 pour le tableau
 -Ajustement des marges de l'interface
