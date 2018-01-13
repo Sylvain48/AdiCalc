@@ -4,6 +4,9 @@
 
 */
 
+var cellules = [];
+var i = 0;
+var j = 0;
 
 var parametresElt = document.getElementById("parametres");
 var jeuElt = document.getElementById("jeu");
@@ -31,9 +34,9 @@ var valeurs = 9 // Amplitude des valeurs du tableau (1-9 par défaut)
 
 // Converti indices de tableaux à 2 dimensions
 // Renvoi l'indice pour un tableau unidimensionnel
-function indiceTableau(x, y, largeurTableau, hauteurTableau) {
-    var indice = x + largeurTableau * y;
-    if ((x < largeurTableau) && (y < hauteurTableau)) {
+function indiceTableau(x, y, dimTableau) {
+    var indice = x + dimTableau * y;
+    if ((x < dimTableau) && (y < dimTableau)) {
         return indice;
     } else {
         console.error("Indices entrés trop grands!");
@@ -136,6 +139,15 @@ function razParametres() {
     lancerJeu();
 }
 
+function tableauValeurs() {
+    for (i = 0; i < dimension * dimension; i++) {
+        cellules[i] = {
+            valeur: Math.floor(Math.random() * valeurs + 1),
+            actif: true
+        };
+    } // fin boucle i
+}
+
 // Construction aire de jeu
 function constructAireJeu() {
     jeuElt.style.width = "700px";
@@ -150,14 +162,21 @@ function constructAireJeu() {
     var tableauTrElts = [];
     var tableauTdElts = [];
     var indice = 0;
-    for (var i = 0; i < dimension; i++) {
+    var compteur = 0;
+    tableauValeurs();
+    for (i = 0; i < dimension + 2; i++) {
         tableauTrElts[i] = document.createElement("tr");
         tableauElt.appendChild(tableauTrElts[i]);
-        for (var j = 0; j < dimension; j++) {
-            indice = indiceTableau(j, i, dimension, dimension);
+        for (j = 0; j < dimension + 2; j++) {
+            indice = indiceTableau(j, i, dimension);
             tableauTdElts[indice] = document.createElement("td");
             tableauTdElts[indice].style.border = "1px solid";
-            tableauTdElts[indice].textContent = indice;
+            if (i > 0 && i < dimension + 1 && j > 0 && j < dimension + 1) {
+                tableauTdElts[indice].textContent = cellules[compteur].valeur;
+                compteur++;
+            } else {
+                //tableauTdElts[indice].style.border = "none";
+            }
             tableauTrElts[i].appendChild(tableauTdElts[indice]);
         } //fin boucle j
     } // fin boucle i
