@@ -7,6 +7,8 @@
 var cellules = [];
 var i = 0;
 var j = 0;
+var somme = 0;
+var tdElts = document.getElementsByTagName("td");
 
 var parametresElt = document.getElementById("parametres");
 var jeuElt = document.getElementById("jeu");
@@ -39,7 +41,8 @@ function indiceTableau(x, y, dimTableau) {
     if ((x < dimTableau) && (y < dimTableau)) {
         return indice;
     } else {
-        console.error("Indices entrés trop grands!");
+        return indice;
+        //console.error("Indices entrés trop grands!");
     }
 }
 
@@ -145,6 +148,9 @@ function tableauValeurs() {
             valeur: Math.floor(Math.random() * valeurs + 1),
             actif: true
         };
+        if (Math.random() > .6) {
+            cellules[i].actif = false;
+        }
     } // fin boucle i
 }
 
@@ -164,22 +170,63 @@ function constructAireJeu() {
     var indice = 0;
     var compteur = 0;
     tableauValeurs();
+
     for (i = 0; i < dimension + 2; i++) {
         tableauTrElts[i] = document.createElement("tr");
         tableauElt.appendChild(tableauTrElts[i]);
         for (j = 0; j < dimension + 2; j++) {
-            indice = indiceTableau(j, i, dimension);
+            indice = indiceTableau(j, i, dimension + 2);
             tableauTdElts[indice] = document.createElement("td");
-            tableauTdElts[indice].style.border = "1px solid";
+            tableauTdElts[indice].style.border = "1px solid aqua";
             if (i > 0 && i < dimension + 1 && j > 0 && j < dimension + 1) {
                 tableauTdElts[indice].textContent = cellules[compteur].valeur;
+                // ---TEST: Colore en rouge les cases actif==False-------------
+                if (cellules[compteur].actif === false) {
+                    tableauTdElts[indice].style.color = "red";
+                } // --------------Fin de test ----------------------
                 compteur++;
             } else {
-                //tableauTdElts[indice].style.border = "none";
+                tableauTdElts[indice].style.border = "none";
             }
             tableauTrElts[i].appendChild(tableauTdElts[indice]);
         } //fin boucle j
     } // fin boucle i
+    console.log("longueur tableau : " + tableauTdElts.length);
+
+    // Création des sommes horizontales
+    for (i = 0; i < dimension; i++) {
+        somme = 0;
+        for (j = 0; j < dimension; j++) {
+            indice = indiceTableau(j, i, dimension);
+            if (cellules[indice].actif === true) {
+                somme = somme + cellules[indice].valeur;
+            }
+        } // fin boucle j
+        // Ecriture des sommes horizontales
+        indice = (dimension + 2) * (i + 1);
+        tableauTdElts[indice].textContent = somme;
+        indice = (dimension + 2) * (i + 1) + dimension + 1;
+        tableauTdElts[indice].textContent = somme;
+    } // fin boucle i
+    
+    
+    // Création des sommes verticales
+    for (i = 0; i < dimension; i++) {
+        somme = 0;
+        for (j = 0; j < dimension; j++) {
+            indice = indiceTableau(i, j, dimension);
+            if (cellules[indice].actif === true) {
+                somme = somme + cellules[indice].valeur;
+            }
+        } // fin boucle j
+        // Ecriture des sommes verticales
+        indice = i+1;
+        tableauTdElts[indice].textContent = somme;
+        indice = i+1+(dimension+2)*(dimension+1);
+        tableauTdElts[indice].textContent = somme;
+    } // fin boucle i
+    
+    
     jeuElt.appendChild(tableauElt);
 }
 

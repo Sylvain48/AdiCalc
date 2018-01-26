@@ -1,4 +1,11 @@
 Notes de version :
+V 0.12 Ajout des sommes
+-Les sommes de chaque lignes et colonnes sont bien inscrites dans les cases autour du tableau central
+-les cases du pourtour du tableau n'ont plus de cadre
+
+V 0.11 Valeurs aléatoires
+-Les cellules contiennent maintnenant les valeurs du jeu
+-Les cellules dont le boleen "actif" est false sont coloré en rouge (TEST). Ce sont les cellules qui ne seront pas comptabilisé dans la somme.
 
 V 0.10 Premier tableau
 -Ajout du cadre de jeu
