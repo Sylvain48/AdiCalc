@@ -1,4 +1,9 @@
 Notes de version :
+
+V 0.20 Début d'interaction cellules
+-Ajout du paramêtre apparence aux éléments du tableau cellules[]
+-Un clic dans les cellules les colore une première fois en vert puis une deuxième fois en rouge.
+
 V 0.12 Ajout des sommes
 -Les sommes de chaque lignes et colonnes sont bien inscrites dans les cases autour du tableau central
 -les cases du pourtour du tableau n'ont plus de cadre

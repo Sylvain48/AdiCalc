@@ -146,7 +146,8 @@ function tableauValeurs() {
     for (i = 0; i < dimension * dimension; i++) {
         cellules[i] = {
             valeur: Math.floor(Math.random() * valeurs + 1),
-            actif: true
+            actif: true,
+            apparence: 0
         };
         if (Math.random() > .6) {
             cellules[i].actif = false;
@@ -180,6 +181,24 @@ function constructAireJeu() {
             tableauTdElts[indice].style.border = "1px solid aqua";
             if (i > 0 && i < dimension + 1 && j > 0 && j < dimension + 1) {
                 tableauTdElts[indice].textContent = cellules[compteur].valeur;
+                tableauTdElts[indice].style.backgroundColor = "black";
+
+                // Interaction avec les cellules
+                tableauTdElts[indice].addEventListener("click", function (e) {
+                    switch (e.target.style.backgroundColor) {
+                        case "black":
+                            e.target.style.backgroundColor = "green";
+                            break;
+                        case "green":
+                            e.target.style.backgroundColor = "red";
+                            break;
+                        case "red":
+                            e.target.style.backgroundColor = "black";
+                            break;
+                    } // fin de switch
+                }); // fin event
+
+
                 // ---TEST: Colore en rouge les cases actif==False-------------
                 if (cellules[compteur].actif === false) {
                     tableauTdElts[indice].style.color = "red";
@@ -191,6 +210,16 @@ function constructAireJeu() {
             tableauTrElts[i].appendChild(tableauTdElts[indice]);
         } //fin boucle j
     } // fin boucle i
+    /*
+        // Interaction evec les cellules
+        tableauTdElts.forEach(function (td) {
+            
+            td.addEventListener("click", function (e) {
+                e.target.classList.add("apparence1");
+                console.log("Class : " + e.target.innerHTML);
+            });
+        });
+    */
     console.log("longueur tableau : " + tableauTdElts.length);
 
     // Création des sommes horizontales
@@ -208,8 +237,8 @@ function constructAireJeu() {
         indice = (dimension + 2) * (i + 1) + dimension + 1;
         tableauTdElts[indice].textContent = somme;
     } // fin boucle i
-    
-    
+
+
     // Création des sommes verticales
     for (i = 0; i < dimension; i++) {
         somme = 0;
@@ -220,13 +249,13 @@ function constructAireJeu() {
             }
         } // fin boucle j
         // Ecriture des sommes verticales
-        indice = i+1;
+        indice = i + 1;
         tableauTdElts[indice].textContent = somme;
-        indice = i+1+(dimension+2)*(dimension+1);
+        indice = i + 1 + (dimension + 2) * (dimension + 1);
         tableauTdElts[indice].textContent = somme;
     } // fin boucle i
-    
-    
+
+
     jeuElt.appendChild(tableauElt);
 }
 
