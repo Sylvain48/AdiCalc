@@ -1,8 +1,15 @@
 Notes de version :
 
+V 0.30 Validation des sommes
+- Les cases à fond vert ont maintenant une influence sur la valeur de cellules[].apparence
+- Les sommes à atteindre sont maintenant colorées en vert quand la somme des nombres du tableau cochées leur correspond
+- Les cellules de couleur rouge a des fin de test ne le sont plus.
+-Nettoyage du code de code inutiles et mis en commentaire.git
+-Le jeu commence à être jouable!
+
 V 0.20 Début d'interaction cellules
 -Ajout du paramêtre apparence aux éléments du tableau cellules[]
--Un clic dans les cellules les colore une première fois en vert puis une deuxième fois en rouge.
+-Un clic dans les cellules les colore une première fois en vert puis une deuxième fois en rouge
 
 V 0.12 Ajout des sommes
 -Les sommes de chaque lignes et colonnes sont bien inscrites dans les cases autour du tableau central
@@ -10,7 +17,7 @@ V 0.12 Ajout des sommes
 
 V 0.11 Valeurs aléatoires
 -Les cellules contiennent maintnenant les valeurs du jeu
--Les cellules dont le boleen "actif" est false sont coloré en rouge (TEST). Ce sont les cellules qui ne seront pas comptabilisé dans la somme.
+-Les cellules dont le boleen "actif" est false sont colorées en rouge (TEST). Ce sont les cellules qui ne seront pas comptabilisé dans la somme.
 
 V 0.10 Premier tableau
 -Ajout du cadre de jeu

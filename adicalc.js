@@ -9,6 +9,7 @@ var i = 0;
 var j = 0;
 var somme = 0;
 var tdElts = document.getElementsByTagName("td");
+var addition = 0;
 
 var parametresElt = document.getElementById("parametres");
 var jeuElt = document.getElementById("jeu");
@@ -142,6 +143,52 @@ function razParametres() {
     lancerJeu();
 }
 
+// Analyse le tableau des valeurs
+function analyseTableau() {
+    // analyse horizontale
+    for (i = 0; i < dimension; i++) {
+        addition = 0;
+        for (j = 0; j < dimension; j++) {
+            indice = j + i * dimension;
+            if (tdElts[j + 1 + (i + 1) * (dimension + 2)].style.backgroundColor === "green") {
+                cellules[indice].apparence = 1;
+            } else {
+                cellules[indice].apparence = 0;
+            }
+            if (cellules[indice].apparence === 1) {
+                addition = addition + cellules[indice].valeur;
+            }
+        } // fin for j*/
+        // Comparaison de l'addition avec le nombre a atteindre
+        if (Number(tdElts[(i + 1) * (dimension + 2)].textContent) === addition) {
+            tdElts[(i + 1) * (dimension + 2)].style.color = "green";
+            tdElts[(i + 1) * (dimension + 2) + dimension + 1].style.color = "green";
+        } else {
+            tdElts[(i + 1) * (dimension + 2)].style.color = "aqua";
+            tdElts[(i + 1) * (dimension + 2) + dimension + 1].style.color = "aqua";
+        }
+    } // fin for i
+    // Analyse verticale
+    for (i = 0; i < dimension; i++) {
+        addition = 0;
+        for (j = 0; j < dimension; j++) {
+            indice = i + j * dimension;
+            if (cellules[indice].apparence === 1) {
+                addition = addition + cellules[indice].valeur;
+            }
+        } // fin de for j
+        // Comparaison de l'adition avec le nombre a atteindre
+        if (Number(tdElts[i + 1].textContent) === addition) {
+            tdElts[i + 1].style.color = "green";
+            tdElts[i + 1 + (dimension + 2)*(dimension+1)].style.color = "green";
+        } else {
+            tdElts[i + 1].style.color = "aqua";
+            tdElts[i + 1 + (dimension + 2)*(dimension+1)].style.color = "aqua";
+        }
+    } // fin de for i
+} // fin de fonction analyseTableau
+
+// Remplissage du tableau des valeurs
 function tableauValeurs() {
     for (i = 0; i < dimension * dimension; i++) {
         cellules[i] = {
@@ -196,13 +243,8 @@ function constructAireJeu() {
                             e.target.style.backgroundColor = "black";
                             break;
                     } // fin de switch
-                }); // fin event
-
-
-                // ---TEST: Colore en rouge les cases actif==False-------------
-                if (cellules[compteur].actif === false) {
-                    tableauTdElts[indice].style.color = "red";
-                } // --------------Fin de test ----------------------
+                    analyseTableau();
+                }); // fin event interaction
                 compteur++;
             } else {
                 tableauTdElts[indice].style.border = "none";
@@ -210,17 +252,6 @@ function constructAireJeu() {
             tableauTrElts[i].appendChild(tableauTdElts[indice]);
         } //fin boucle j
     } // fin boucle i
-    /*
-        // Interaction evec les cellules
-        tableauTdElts.forEach(function (td) {
-            
-            td.addEventListener("click", function (e) {
-                e.target.classList.add("apparence1");
-                console.log("Class : " + e.target.innerHTML);
-            });
-        });
-    */
-    console.log("longueur tableau : " + tableauTdElts.length);
 
     // Création des sommes horizontales
     for (i = 0; i < dimension; i++) {
