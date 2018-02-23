@@ -49,6 +49,20 @@ function indiceTableau(x, y, dimTableau) {
 
 // Fait apparaitre les parametres
 function goParametres() {
+    function coloreDim(e) {
+        dimTroisElt.style.backgroundColor = "black";
+        dimQuatreElt.style.backgroundColor = "black";
+        dimCinqElt.style.backgroundColor = "black";
+        dimSixElt.style.backgroundColor = "black";
+        dimSeptElt.style.backgroundColor = "black";
+        e.target.style.backgroundColor = "green";
+    }
+    function coloreVal(e) {
+        valCinqElt.style.backgroundColor = "black";
+        valNeufElt.style.backgroundColor = "black";
+        valDixNeufElt.style.backgroundColor = "black";
+        e.target.style.backgroundColor = "green";
+    }
     parametresElt.style.border = "solid 1px";
     // Dimensions du tableau
     dimTroisElt.textContent = "3x3";
@@ -57,6 +71,7 @@ function goParametres() {
     dimTroisElt.addEventListener("click", function (e) {
         e.preventDefault();
         dimension = 3;
+        coloreDim(e);
     });
     dimQuatreElt.textContent = "4x4";
     dimQuatreElt.classList.add("boutons");
@@ -64,6 +79,7 @@ function goParametres() {
     dimQuatreElt.addEventListener("click", function (e) {
         e.preventDefault();
         dimension = 4;
+        coloreDim(e);
     });
     dimCinqElt.textContent = "5x5";
     dimCinqElt.classList.add("boutons");
@@ -71,6 +87,7 @@ function goParametres() {
     dimCinqElt.addEventListener("click", function (e) {
         e.preventDefault();
         dimension = 5;
+        coloreDim(e);
     });
     dimSixElt.textContent = "6x6";
     dimSixElt.classList.add("boutons");
@@ -78,6 +95,7 @@ function goParametres() {
     dimSixElt.addEventListener("click", function (e) {
         e.preventDefault();
         dimension = 6;
+        coloreDim(e);
     });
     dimSeptElt.textContent = "7x7";
     dimSeptElt.classList.add("boutons");
@@ -85,6 +103,7 @@ function goParametres() {
     dimSeptElt.addEventListener("click", function (e) {
         e.preventDefault();
         dimension = 7;
+        coloreDim(e);
     });
 
     // Plage des Valeurs de nombres du tableau
@@ -94,6 +113,7 @@ function goParametres() {
     valCinqElt.addEventListener("click", function (e) {
         e.preventDefault();
         valeurs = 5;
+        coloreVal(e);
     });
     valNeufElt.textContent = "1-9";
     valNeufElt.classList.add("boutons");
@@ -101,6 +121,7 @@ function goParametres() {
     valNeufElt.addEventListener("click", function (e) {
         e.preventDefault();
         valeurs = 9;
+        coloreVal(e);
     });
     valDixNeufElt.textContent = "1-19";
     valDixNeufElt.classList.add("boutons");
@@ -108,6 +129,7 @@ function goParametres() {
     valDixNeufElt.addEventListener("click", function (e) {
         e.preventDefault();
         valeurs = 19;
+        coloreVal(e);
     });
 
     goElt.textContent = "GO";
@@ -229,6 +251,12 @@ function constructAireJeu() {
             if (i > 0 && i < dimension + 1 && j > 0 && j < dimension + 1) {
                 tableauTdElts[indice].textContent = cellules[compteur].valeur;
                 tableauTdElts[indice].style.backgroundColor = "black";
+                tableauTdElts[indice].addEventListener('mouseover', function (e) {
+                   e.target.style.color = "#48E80E"; 
+                });
+                tableauTdElts[indice].addEventListener('mouseout', function (e) {
+                   e.target.style.color = "aqua"; 
+                });
 
                 // Interaction avec les cellules
                 tableauTdElts[indice].addEventListener("click", function (e) {

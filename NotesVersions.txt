@@ -1,5 +1,9 @@
 Notes de version :
 
+V 0.31 Ajustements colorés
+-Dans les paramètres, quand on selectionne une case son fond devient vert.
+-En jeu le survol des case colore le chiffre en vert clair
+
 V 0.30 Validation des sommes
 - Les cases à fond vert ont maintenant une influence sur la valeur de cellules[].apparence
 - Les sommes à atteindre sont maintenant colorées en vert quand la somme des nombres du tableau cochées leur correspond
