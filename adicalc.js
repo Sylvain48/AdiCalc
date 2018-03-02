@@ -10,6 +10,7 @@ var j = 0;
 var somme = 0;
 var tdElts = document.getElementsByTagName("td");
 var addition = 0;
+var compteur = 0;
 
 var parametresElt = document.getElementById("parametres");
 var jeuElt = document.getElementById("jeu");
@@ -35,6 +36,13 @@ var valNeufElt = document.createElement("a");
 var valDixNeufElt = document.createElement("a");
 var valeurs = 9 // Amplitude des valeurs du tableau (1-9 par défaut)
 
+// création du tableau de jeu
+var tableauElt = document.createElement("table");
+tableauElt.id = "table";
+var tableauTrElts = [];
+var tableauTdElts = [];
+
+
 // Converti indices de tableaux à 2 dimensions
 // Renvoi l'indice pour un tableau unidimensionnel
 function indiceTableau(x, y, dimTableau) {
@@ -47,6 +55,15 @@ function indiceTableau(x, y, dimTableau) {
     }
 }
 
+// Fin de la partie gagnée
+function finPartie() {
+    /* //jeuElt.innerHTML ="";
+     jeuElt.style.border = "none";
+     jeuElt.removeChild(document.getElementById("table"));
+     goParametres();*/
+    window.location.reload();
+}
+
 // Fait apparaitre les parametres
 function goParametres() {
     function coloreDim(e) {
@@ -57,6 +74,7 @@ function goParametres() {
         dimSeptElt.style.backgroundColor = "black";
         e.target.style.backgroundColor = "green";
     }
+
     function coloreVal(e) {
         valCinqElt.style.backgroundColor = "black";
         valNeufElt.style.backgroundColor = "black";
@@ -161,12 +179,12 @@ function goParametres() {
 function razParametres() {
     parametresElt.innerHTML = "";
     parametresElt.style.border = "none";
-    console.log("Dimension : " + dimension + "     Valeurs : 1-" + valeurs);
     lancerJeu();
 }
 
 // Analyse le tableau des valeurs
 function analyseTableau() {
+    compteur = 0;
     // analyse horizontale
     for (i = 0; i < dimension; i++) {
         addition = 0;
@@ -185,6 +203,7 @@ function analyseTableau() {
         if (Number(tdElts[(i + 1) * (dimension + 2)].textContent) === addition) {
             tdElts[(i + 1) * (dimension + 2)].style.color = "green";
             tdElts[(i + 1) * (dimension + 2) + dimension + 1].style.color = "green";
+            compteur++;
         } else {
             tdElts[(i + 1) * (dimension + 2)].style.color = "aqua";
             tdElts[(i + 1) * (dimension + 2) + dimension + 1].style.color = "aqua";
@@ -202,12 +221,16 @@ function analyseTableau() {
         // Comparaison de l'adition avec le nombre a atteindre
         if (Number(tdElts[i + 1].textContent) === addition) {
             tdElts[i + 1].style.color = "green";
-            tdElts[i + 1 + (dimension + 2)*(dimension+1)].style.color = "green";
+            tdElts[i + 1 + (dimension + 2) * (dimension + 1)].style.color = "green";
+            compteur++;
         } else {
             tdElts[i + 1].style.color = "aqua";
-            tdElts[i + 1 + (dimension + 2)*(dimension+1)].style.color = "aqua";
+            tdElts[i + 1 + (dimension + 2) * (dimension + 1)].style.color = "aqua";
         }
     } // fin de for i
+    if (compteur === (dimension * 2)) {
+        finPartie();
+    }
 } // fin de fonction analyseTableau
 
 // Remplissage du tableau des valeurs
@@ -233,10 +256,8 @@ function constructAireJeu() {
     jeuElt.style.justifyContent = "center";
     jeuElt.style.alignItems = "center";
 
-    // création du tableau
-    var tableauElt = document.createElement("table");
-    var tableauTrElts = [];
-    var tableauTdElts = [];
+    // *************************************
+
     var indice = 0;
     var compteur = 0;
     tableauValeurs();
@@ -252,10 +273,10 @@ function constructAireJeu() {
                 tableauTdElts[indice].textContent = cellules[compteur].valeur;
                 tableauTdElts[indice].style.backgroundColor = "black";
                 tableauTdElts[indice].addEventListener('mouseover', function (e) {
-                   e.target.style.color = "#48E80E"; 
+                    e.target.style.color = "#48E80E";
                 });
                 tableauTdElts[indice].addEventListener('mouseout', function (e) {
-                   e.target.style.color = "aqua"; 
+                    e.target.style.color = "aqua";
                 });
 
                 // Interaction avec les cellules
@@ -314,6 +335,25 @@ function constructAireJeu() {
         tableauTdElts[indice].textContent = somme;
     } // fin boucle i
 
+    // Création du bouton reset
+    var resetElt = tableauTdElts[0];
+    resetElt.textContent = "R";
+    resetElt.addEventListener("mouseover", function (e) {
+        e.target.style.color = "red";
+    });
+    resetElt.addEventListener("mouseout", function (e) {
+        e.target.style.color = "aqua";
+    });
+    resetElt.addEventListener("click", function () {
+        tableauTdElts.forEach(function (cellule) {
+            cellule.style.backgroundColor = "black";
+            cellule.style.color = "aqua";
+        });
+        cellules.forEach(function (cellule) {
+           cellule.apparence = 0; 
+        });
+    });
+    
 
     jeuElt.appendChild(tableauElt);
 }

@@ -1,5 +1,9 @@
 Notes de version :
 
+V 0.40 Fin de partie
+-Detection de la fin de partie
+-Ajout d'un bouton Reset (fonctionne, se colore en rouge au survol de la souris)
+
 V 0.31 Ajustements colorés
 -Dans les paramètres, quand on selectionne une case son fond devient vert.
 -En jeu le survol des case colore le chiffre en vert clair
