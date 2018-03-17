@@ -1,5 +1,11 @@
 Notes de version :
 
+V 0.50 Anim
+-Nettoyage code de fin de partie (suppression code mis en commentaire)
+-La fin de partie entraine le remplacement du nom du jeu par "Gagné !" écrit en rouge
+-Ajout dans le code d'un stopPropagation()
+-En fin de partie un clic n'importe ou sur l'écran renvoie une partie
+
 V 0.40 Fin de partie
 -Detection de la fin de partie
 -Ajout d'un bouton Reset (fonctionne, se colore en rouge au survol de la souris)

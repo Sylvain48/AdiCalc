@@ -57,11 +57,14 @@ function indiceTableau(x, y, dimTableau) {
 
 // Fin de la partie gagnée
 function finPartie() {
-    /* //jeuElt.innerHTML ="";
-     jeuElt.style.border = "none";
-     jeuElt.removeChild(document.getElementById("table"));
-     goParametres();*/
-    window.location.reload();
+    /*setTimeout(function () {
+        window.location.reload();
+    }, 10000);*/
+    document.getElementsByTagName("body")[0].addEventListener("click", function () {
+        window.location.reload();
+    });
+    document.getElementsByTagName("h1")[0].textContent = "Gagné!";
+    document.getElementsByTagName("h1")[0].style.color = "red";
 }
 
 // Fait apparaitre les parametres
@@ -281,6 +284,7 @@ function constructAireJeu() {
 
                 // Interaction avec les cellules
                 tableauTdElts[indice].addEventListener("click", function (e) {
+                    e.stopPropagation();
                     switch (e.target.style.backgroundColor) {
                         case "black":
                             e.target.style.backgroundColor = "green";
@@ -344,21 +348,19 @@ function constructAireJeu() {
     resetElt.addEventListener("mouseout", function (e) {
         e.target.style.color = "aqua";
     });
-    resetElt.addEventListener("click", function () {
+    resetElt.addEventListener("click", function (e) {
+        e.stopPropagation();
         tableauTdElts.forEach(function (cellule) {
             cellule.style.backgroundColor = "black";
             cellule.style.color = "aqua";
         });
         cellules.forEach(function (cellule) {
-           cellule.apparence = 0; 
+            cellule.apparence = 0;
         });
     });
-    
 
     jeuElt.appendChild(tableauElt);
 }
-
-
 
 function lancerJeu() {
     console.log("GO!!!");
