@@ -1,1 +1,1 @@
-C'est un petit jeu de calcul mental
+C'est un petit jeu de calcul mental et de logique adapté pour toute la famille

@@ -1,13 +1,18 @@
 Notes de version :
 
+V 0.52 Fin de partie enjolivée
+- En fin de partie le cadre devient vert
+- Les cases non colorées et non selectionnées se colorent en rouge
+
+
 V 0.51 Mise a jour note de version
--Correction : Oublie lors du dernier commit de sauvegarder les note de cette version. Corrigé!
+-Correction : Oublie lors du dernier commit de sauvegarder les note de cette version. Corrigé! -
 
 V 0.50 Finalisation de fin de partie
 -Nettoyage code de fin de partie (suppression code mis en commentaire)
 -La fin de partie entraine le remplacement du nom du jeu par "Gagné !" écrit en rouge
 -Ajout dans le code d'un stopPropagation()
--En fin de partie un clic n'importe ou sur l'écran renvoie une partiegit log
+-En fin de partie un clic n'importe ou sur l'écran renvoie une partie
 
 V 0.40 Fin de partie
 -Detection de la fin de partie

@@ -57,14 +57,19 @@ function indiceTableau(x, y, dimTableau) {
 
 // Fin de la partie gagnée
 function finPartie() {
-    /*setTimeout(function () {
-        window.location.reload();
-    }, 10000);*/
     document.getElementsByTagName("body")[0].addEventListener("click", function () {
         window.location.reload();
     });
     document.getElementsByTagName("h1")[0].textContent = "Gagné!";
     document.getElementsByTagName("h1")[0].style.color = "red";
+    var tableauValeurs = document.getElementsByClassName("tableauValeurs");
+    document.getElementsByTagName("body")[0].style.backgroundColor = "green";
+    jeuElt.style.backgroundColor = "black";
+    for (i = 0; i < tableauValeurs.length; i++) {
+        if (tableauValeurs[i].style.backgroundColor != "green") {
+            tableauValeurs[i].style.backgroundColor = "red";
+        } // Fin du if
+    }
 }
 
 // Fait apparaitre les parametres
@@ -275,6 +280,7 @@ function constructAireJeu() {
             if (i > 0 && i < dimension + 1 && j > 0 && j < dimension + 1) {
                 tableauTdElts[indice].textContent = cellules[compteur].valeur;
                 tableauTdElts[indice].style.backgroundColor = "black";
+                tableauTdElts[indice].classList.add("tableauValeurs");
                 tableauTdElts[indice].addEventListener('mouseover', function (e) {
                     e.target.style.color = "#48E80E";
                 });
